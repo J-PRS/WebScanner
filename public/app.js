@@ -180,8 +180,7 @@ async function onScanSuccess(decodedText, decodedResult) {
 }
 
 function onScanFailure(error) {
-    // Only log every 100th failure to avoid spam
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.0001) {
         debugLog('Scan failure', { error });
     }
 }

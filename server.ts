@@ -78,7 +78,7 @@ async function handler(req: Request): Promise<Response> {
 }
 
 // Parse command line arguments
-const DEFAULT_PORT = 8000;
+const DEFAULT_PORT = 8001;
 const portArg = Deno.args.find(arg => arg.startsWith('--port='));
 const port = portArg ? parseInt(portArg.split('=')[1], 10) : DEFAULT_PORT;
 
