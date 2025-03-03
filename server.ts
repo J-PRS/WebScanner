@@ -3,9 +3,9 @@ import { serveDir } from "https://deno.land/std@0.140.0/http/file_server.ts";
 
 console.log("Server starting...");
 
-let debugMessages: string[] = [];
+const debugMessages: string[] = [];
 
-function logDebug(message: string, data?: any) {
+function logDebug(message: string, data?: Record<string, unknown>) {
   const timestamp = new Date().toISOString();
   let logMessage = `[${timestamp}] ${message}`;
   
@@ -33,7 +33,7 @@ function logDebug(message: string, data?: any) {
         .map(line => '  ' + line)  // Indent each line
         .join('\n');
       logMessage += '\n' + prettyData;
-    } catch (e) {
+    } catch (_e) {
       logMessage += ' [Error stringifying data]';
     }
   }
@@ -62,8 +62,8 @@ async function handler(req: Request): Promise<Response> {
       }
       
       return new Response("Debug logged", { status: 200 });
-    } catch (e) {
-      console.error('Error processing debug data:', e);
+    } catch (err) {
+      console.error('Error processing debug data:', err);
       return new Response("Invalid debug data", { status: 400 });
     }
   }
@@ -77,5 +77,10 @@ async function handler(req: Request): Promise<Response> {
   });
 }
 
-console.log("QR Code Scanner server running on http://localhost:8000");
-serve(handler, { port: 8001 });
+// Parse command line arguments
+const DEFAULT_PORT = 8000;
+const portArg = Deno.args.find(arg => arg.startsWith('--port='));
+const port = portArg ? parseInt(portArg.split('=')[1], 10) : DEFAULT_PORT;
+
+console.log(`QR Code Scanner server running on http://localhost:${port}`);
+serve(handler, { port });

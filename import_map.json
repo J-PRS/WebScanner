@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "$std/http/server.ts": "https://deno.land/std@0.224.0/http/server.ts",
+    "$std/http/file_server.ts": "https://deno.land/std@0.224.0/http/file_server.ts"
+  }
+}
