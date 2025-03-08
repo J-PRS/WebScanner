@@ -1,0 +1,77 @@
+# Scanner Project Architecture
+
+## Overview
+A web-based QR code scanner application that allows users to scan QR codes and manage scanned items. The application is built using modern web technologies and follows a client-server architecture.
+
+## Technical Stack
+- Frontend: HTML5, CSS3, JavaScript
+- QR Code Scanning: html5-qrcode library
+- Backend: Python (Flask) for development server
+- Audio: Web Audio API for scan feedback
+
+## System Architecture
+
+### Frontend Components
+1. **UI Components**
+   - Camera container for QR scanning
+   - Scanned items list
+   - Share button for exporting data
+   - Alternative input container for manual entry
+
+2. **Core Features**
+   - Real-time QR code scanning
+   - Audio feedback on successful scans
+   - List management (add/remove items)
+   - Data sharing capabilities
+   - Camera availability detection
+   - Manual input fallback
+
+3. **State Management**
+   - Client-side state for scanned items
+   - Local storage for persistence
+   - Temporary storage for session data
+
+### Backend Components
+1. **Development Server**
+   - Python-based development server
+   - Debug endpoint for logging
+   - Static file serving
+   - CORS handling
+
+2. **API Endpoints**
+   - `/debug`: POST endpoint for client-side debugging
+   - Static file serving endpoints
+
+## Security Considerations
+- Camera access is handled through browser permissions
+- Data is stored locally on the client
+- No sensitive information is transmitted to the server
+- Secure audio context initialization
+
+## Performance Optimization
+- Efficient QR code scanning implementation
+- Optimized audio feedback
+- Responsive UI design
+- Camera resource management
+
+## Error Handling
+- Graceful camera fallback
+- User-friendly error messages
+- Debug logging system
+- Resource cleanup on page unload
+
+## Future Expansion Points
+1. **Feature Enhancements**
+   - Cloud storage integration
+   - Advanced data analysis
+   - Batch processing capabilities
+
+2. **Technical Improvements**
+   - Mobile optimization
+   - Offline capabilities
+   - Enhanced security features
+
+3. **Integration Opportunities**
+   - API integration with other services
+   - Customizable scanning profiles
+   - Advanced data export formats
